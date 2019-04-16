@@ -11,6 +11,7 @@ class Formulaire extends Component {
 
         const message = {
             pseudo: 'Human',
+            intent: '',
             message: this.state.message
         }
 

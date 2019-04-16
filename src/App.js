@@ -22,9 +22,11 @@ class App extends Component {
         chatBot.getResponseBot(message.message).then(res => {
             const botMessage = {
                 pseudo: 'Bot',
+                intent: '',
                 message: ''
             }
             botMessage.message = res.data.response.queryResult.fulfillmentText
+            botMessage.intent = res.data.response.queryResult.intent.displayName
             messages[`message-${Date.now()}`] = botMessage
             this.setState({ messages })
         })
