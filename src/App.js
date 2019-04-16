@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from 'react'
 import Formulaire from './components/Formulaire';
 import Message from './components/Message'
-// import Chatbot from './services/Chatbot'
+import Chatbot from './services/Chatbot'
 
 import './App.css'
 
@@ -10,15 +10,31 @@ class App extends Component {
         messages: {}
     }
 
+    messagesRef = createRef()
+
     addMessage = message => {
-        // let chatBot = new Chatbot()
         const messages = { ...this.state.messages }
         messages[`message-${Date.now()}`] = message
         this.setState({ messages })
-        // chatBot.getResponseBot(message.message).then(res=> { console.log(res.data.response.queryResult.fulfillmentText)})
+
+        let chatBot = new Chatbot()
+       
+        chatBot.getResponseBot(message.message).then(res => {
+            const botMessage = {
+                pseudo: 'Bot',
+                message: ''
+            }
+            botMessage.message = res.data.response.queryResult.fulfillmentText
+            messages[`message-${Date.now()}`] = botMessage
+            this.setState({ messages })
+        })
     }
 
 
+    componentDidUpdate () {
+        const ref = this.messagesRef.current
+        ref.scrollTop = ref.scrollHeight
+    }
 
     render () {
         const messages =  Object.keys(this.state.messages)
@@ -31,7 +47,10 @@ class App extends Component {
 
         return (
             <div className='box'>
-                <div className='messages'>
+                <div
+                    className='messages'
+                    ref={this.messagesRef}
+                >
                     <div className='message'>
                         {messages}
                     </div>
