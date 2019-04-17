@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
-const Produit = () => {
-    return (
-        <p>
-            Mon produit
-        </p>
-    )
-}
+class Produit extends Component {
+    render() {
+        return (
+            <Carousel>
+                <div>
+                    <p>description</p>
+                    <img src="assets/1.jpeg" />
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src="assets/2.jpeg" />
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div>
+                    <img src="assets/3.jpeg" />
+                    <p className="legend">Legend 3</p>
+                </div>
+            </Carousel>
+        );
+    }
+};
 
 export default Produit
