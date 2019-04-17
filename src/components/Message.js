@@ -1,5 +1,7 @@
 import React from 'react'
 import Produit from './Produit'
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 const Message = ({ message, pseudo, produits, intent }) => {
 
@@ -7,12 +9,16 @@ const Message = ({ message, pseudo, produits, intent }) => {
     if (produits) {
         self.listeProduits = Object.keys(produits)
             .map(key => (
-                <Produit
-                    key={key}
-                    name={produits[key].name}
-                    description={produits[key].description}
-                    image={produits[key].image}
-                />
+                <div>
+                    <img src={produits[key].image} />
+                    <p className="legend">{produits[key].name}</p>
+                </div>
+                // <Produit
+                //     key={key}
+                //     name={produits[key].name}
+                //     description={produits[key].description}
+                //     image={produits[key].image}
+                // />
             ))
     }
 
@@ -29,7 +35,9 @@ const Message = ({ message, pseudo, produits, intent }) => {
                 <p className='not-user-message'>
                     <strong>{pseudo} :</strong> {message}
                 </p>
-                {this.listeProduits}
+                <Carousel>
+                    {this.listeProduits}
+                </Carousel>
             </div>
         )
     }

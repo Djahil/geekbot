@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import React from 'react';
 
-const Produit = ({ name, description, image }) => {
+const Produit = ({ name, image }) => {
     return (
-        <Carousel>
-            <div>
-                <img src={image} />
-                <p className="legend">{name}</p>
-                {/* <p>{description}</p> */}
-            </div>
-        </Carousel>
+        <div>
+            <img src={image} />
+            <p className="legend">{name}</p>
+            {/* <p>{description}</p> */}
+        </div>
     );
 }
 
