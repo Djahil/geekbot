@@ -22,6 +22,7 @@ class App extends Component {
         let chatBot = new Chatbot()
        
         chatBot.getResponseBot(message.message).then(res => {
+            console.log(res.data)
             const botMessage = {
                 pseudo: 'Geekbot',
                 intent: '',
@@ -30,7 +31,7 @@ class App extends Component {
             }
             botMessage.message = res.data.response.queryResult.fulfillmentText
             botMessage.intent = res.data.response.queryResult.intent.displayName
-            if (botMessage.intent === 'intent.test.produit') {
+            if (botMessage.intent === '04A_ListeProduits') {
                 botMessage.produits = res.data.response.data
             }
             messages[`message-${Date.now()}`] = botMessage

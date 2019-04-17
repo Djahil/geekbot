@@ -23,7 +23,7 @@ const Message = ({message, pseudo, produits, intent}) => {
             </p>
         )
     }
-    if (pseudo === 'Geekbot' && intent === 'intent.test.produit')
+    if (pseudo === 'Geekbot' && intent === '04A_ListeProduits')
     {
         return (
             <div>
