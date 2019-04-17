@@ -37,8 +37,8 @@ class App extends Component {
 
             this.setState({ 
                 messages,
-                intent: botMessage.intent,
-                produits: botMessage.produits
+                // intent: botMessage.intent,
+                // produits: botMessage.produits
              })
         })
     }
@@ -55,8 +55,8 @@ class App extends Component {
                 key={key}
                 message={this.state.messages[key].message}
                 pseudo={this.state.messages[key].pseudo}
-                intent={this.state.intent}
-                produits={this.state.produits}
+                intent={this.state.messages[key].intent}
+                produits={this.state.messages[key].produits}
             />
         ))
 

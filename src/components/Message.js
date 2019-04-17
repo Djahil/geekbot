@@ -1,9 +1,11 @@
 import React from 'react'
 import Produit from './Produit'
 
-const Message = ({intent, message, pseudo, produits}) => {
+const Message = ({message, pseudo, produits, intent}) => {
     
-    const listeProduits = Object.keys(produits)
+    const self = this
+    if(produits) {
+        self.listeProduits = Object.keys(produits)
         .map(key => (
             <Produit
                 key={key}
@@ -12,6 +14,7 @@ const Message = ({intent, message, pseudo, produits}) => {
                 image={produits[key].image}
             />
         ))
+    }
 
     if(pseudo === 'Human') {
         return (
@@ -19,26 +22,25 @@ const Message = ({intent, message, pseudo, produits}) => {
                 {message}
             </p>
         )
-    } else {
-        if (intent === 'intent.test.produit') {
-            return (
-                <div>
-                    <p className='not-user-message'>
-                        <strong>{pseudo} :</strong> {message}
-                    </p>
-                    <p>{listeProduits}</p>
-                </div>
-            )
-        }
-        else {
-            return(
+    }
+    if (pseudo === 'Geekbot' && intent === 'intent.test.produit')
+    {
+        return (
+            <div>
                 <p className='not-user-message'>
                     <strong>{pseudo} :</strong> {message}
                 </p>
-            )
-        }
+                {this.listeProduits}
+            </div>
+        )
     }
-
+    else {
+        return(
+            <p className='not-user-message'>
+                <strong>{pseudo} :</strong> {message}
+            </p>
+        )
+    }
 }
 
 export default Message
