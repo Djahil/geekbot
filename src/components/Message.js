@@ -9,6 +9,7 @@ const Message = ({message, pseudo, produits, intent}) => {
         .map(key => (
             <Produit
                 key={key}
+                id={produits[key].id}
                 name={produits[key].name}
                 description={produits[key].description}
                 image={produits[key].image}
@@ -22,24 +23,26 @@ const Message = ({message, pseudo, produits, intent}) => {
                 {message}
             </p>
         )
-    }
-    if (pseudo === 'Geekbot' && intent === '04A_ListeProduits')
+    } else
     {
-        return (
-            <div>
+        if (intent === '04A_ListeProduits')
+        {
+            return (
+                <div>
+                    <p className='not-user-message'>
+                        <strong>{pseudo} :</strong> {message}
+                    </p>
+                    {this.listeProduits}
+                </div>
+            )
+        }
+        else {
+            return(
                 <p className='not-user-message'>
                     <strong>{pseudo} :</strong> {message}
                 </p>
-                {this.listeProduits}
-            </div>
-        )
-    }
-    else {
-        return(
-            <p className='not-user-message'>
-                <strong>{pseudo} :</strong> {message}
-            </p>
-        )
+            )
+        }
     }
 }
 

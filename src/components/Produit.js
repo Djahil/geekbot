@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Produit = ({name, description, image}) => {
+const Produit = ({id, name, description, image}) => {
     return (
         <div>
-            <p>{name}</p>
-            <p>{image}</p>
-            <p>{description}</p>
+            <p><strong>ID :</strong> {id}</p>
+            <p><strong>Produit :</strong> {name}</p>
+            <p><strong>Image :</strong> {image}</p>
+            <p><strong>Desc. :</strong> {description}</p>
+            <hr/>
         </div>
     )
 }
