@@ -1,10 +1,12 @@
 import React from 'react'
 
-const Produit = () => {
+const Produit = ({name, description, image}) => {
     return (
-        <p>
-            Mon produit
-        </p>
+        <div>
+            <p>{name}</p>
+            <p>{image}</p>
+            <p>{description}</p>
+        </div>
     )
 }
 

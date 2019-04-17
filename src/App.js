@@ -8,6 +8,8 @@ import './App.css'
 class App extends Component {
     state = {
         messages: {},
+        intent: '',
+        produits: {}
     }
 
     messagesRef = createRef()
@@ -23,16 +25,23 @@ class App extends Component {
             const botMessage = {
                 pseudo: 'Geekbot',
                 intent: '',
-                message: ''
+                message: '',
+                produits: {}
             }
             botMessage.message = res.data.response.queryResult.fulfillmentText
             botMessage.intent = res.data.response.queryResult.intent.displayName
+            if (botMessage.intent === 'intent.test.produit') {
+                botMessage.produits = res.data.response.data
+            }
             messages[`message-${Date.now()}`] = botMessage
 
-            this.setState({ messages })
+            this.setState({ 
+                messages,
+                intent: botMessage.intent,
+                produits: botMessage.produits
+             })
         })
     }
-
 
     componentDidUpdate () {
         const ref = this.messagesRef.current
@@ -46,8 +55,11 @@ class App extends Component {
                 key={key}
                 message={this.state.messages[key].message}
                 pseudo={this.state.messages[key].pseudo}
+                intent={this.state.intent}
+                produits={this.state.produits}
             />
         ))
+
 
         return (
             <div className='box'>
