@@ -31,8 +31,8 @@ const Message = ({ message, pseudo, produits, intent }) => {
     }
     if (pseudo === 'Geekbot' && intent === '04A_ListeProduits') {
         return (
-            <div>
-                <p className='not-user-message'>
+            <div className='not-user-message'>
+                <p>
                     <strong>{pseudo} :</strong> {message}
                 </p>
                 <Carousel>

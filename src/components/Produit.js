@@ -2,7 +2,7 @@ import React from 'react';
 
 const Produit = ({ name, image }) => {
     return (
-        <div>
+        <div >
             <img src={image} />
             <p className="legend">{name}</p>
             {/* <p>{description}</p> */}
