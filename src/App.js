@@ -7,7 +7,7 @@ import './App.css'
 
 class App extends Component {
     state = {
-        messages: {}
+        messages: {},
     }
 
     messagesRef = createRef()
@@ -21,13 +21,14 @@ class App extends Component {
        
         chatBot.getResponseBot(message.message).then(res => {
             const botMessage = {
-                pseudo: 'Bot',
+                pseudo: 'Geekbot',
                 intent: '',
                 message: ''
             }
             botMessage.message = res.data.response.queryResult.fulfillmentText
             botMessage.intent = res.data.response.queryResult.intent.displayName
             messages[`message-${Date.now()}`] = botMessage
+
             this.setState({ messages })
         })
     }
@@ -44,6 +45,7 @@ class App extends Component {
             <Message
                 key={key}
                 message={this.state.messages[key].message}
+                pseudo={this.state.messages[key].pseudo}
             />
         ))
 
