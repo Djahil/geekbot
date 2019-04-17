@@ -1,15 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const Produit = ({id, name, description, image}) => {
+const Produit = ({ name, image }) => {
     return (
         <div>
-            <p><strong>ID :</strong> {id}</p>
-            <p><strong>Produit :</strong> {name}</p>
-            <p><strong>Image :</strong> {image}</p>
-            <p><strong>Desc. :</strong> {description}</p>
-            <hr/>
+            <img src={image} />
+            <p className="legend">{name}</p>
+            {/* <p>{description}</p> */}
         </div>
-    )
+    );
 }
 
 export default Produit

@@ -20,7 +20,7 @@ class App extends Component {
         this.setState({ messages })
 
         let chatBot = new Chatbot()
-       
+
         chatBot.getResponseBot(message.message).then(res => {
             console.log(res.data)
             const botMessage = {
@@ -36,30 +36,30 @@ class App extends Component {
             }
             messages[`message-${Date.now()}`] = botMessage
 
-            this.setState({ 
+            this.setState({
                 messages,
                 // intent: botMessage.intent,
                 // produits: botMessage.produits
-             })
+            })
         })
     }
 
-    componentDidUpdate () {
+    componentDidUpdate() {
         const ref = this.messagesRef.current
         ref.scrollTop = ref.scrollHeight
     }
 
-    render () {
-        const messages =  Object.keys(this.state.messages)
-        .map(key => (
-            <Message
-                key={key}
-                message={this.state.messages[key].message}
-                pseudo={this.state.messages[key].pseudo}
-                intent={this.state.messages[key].intent}
-                produits={this.state.messages[key].produits}
-            />
-        ))
+    render() {
+        const messages = Object.keys(this.state.messages)
+            .map(key => (
+                <Message
+                    key={key}
+                    message={this.state.messages[key].message}
+                    pseudo={this.state.messages[key].pseudo}
+                    intent={this.state.messages[key].intent}
+                    produits={this.state.messages[key].produits}
+                />
+            ))
 
 
         return (
