@@ -7,17 +7,16 @@ class Produit extends Component {
         return (
             <Carousel>
                 <div>
-                    <p>description</p>
-                    <img src="assets/1.jpeg" />
-                    <p className="legend">Legend 1</p>
+                    <img src="https://www.fillmurray.com/640/360" />
+                    <p className="legend">Name</p>
                 </div>
                 <div>
-                    <img src="assets/2.jpeg" />
-                    <p className="legend">Legend 2</p>
+                    <img src="https://www.fillmurray.com/640/360" />
+                    <p className="legend">Name</p>
                 </div>
                 <div>
-                    <img src="assets/3.jpeg" />
-                    <p className="legend">Legend 3</p>
+                    <img src="https://www.fillmurray.com/640/360" />
+                    <p className="legend">Name</p>
                 </div>
             </Carousel>
         );
