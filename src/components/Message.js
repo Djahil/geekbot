@@ -1,7 +1,7 @@
 import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-
+import Connexion from './Connexion'
 
 const Message = ({ message, pseudo, produits, intent }) => {
 
@@ -28,7 +28,7 @@ const Message = ({ message, pseudo, produits, intent }) => {
     } else {
         if (intent === '01_welcome') {
             return (
-                <p className='not-user-message'>{message}</p>
+                <p className='not-user-message'><strong>{pseudo} :</strong> {message}</p>
             )
         }
         if (intent === '04A_ListeProduits') {
@@ -40,6 +40,17 @@ const Message = ({ message, pseudo, produits, intent }) => {
                     <Carousel>
                         {this.listeProduits}
                     </Carousel>
+                </div>
+            )
+        }
+        if (intent ==='connexion') {
+            
+            return(
+                <div className='not-user-message'>
+                    <p>
+                        <strong>{pseudo} :</strong> {message}
+                    </p>
+                    <Connexion />
                 </div>
             )
         }
