@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react'
 import Formulaire from './components/Formulaire';
 import Message from './components/Message'
 import Chatbot from './services/Chatbot'
+import Loader from 'react-loader-spinner'
 
 import './App.css'
 
@@ -9,7 +10,8 @@ class App extends Component {
     state = {
         messages: {},
         intent: '',
-        produits: {}
+        produits: {},
+        sessionID: ''
     }
 
     messagesRef = createRef()
@@ -20,9 +22,7 @@ class App extends Component {
         this.setState({ messages })
 
         let chatBot = new Chatbot()
-
-        chatBot.getResponseBot(message.message).then(res => {
-            console.log(res.data)
+        chatBot.getResponseBot(message.message, this.state.sessionID).then(res => {
             const botMessage = {
                 pseudo: 'Geekbot',
                 intent: '',
@@ -44,6 +44,13 @@ class App extends Component {
         })
     }
 
+    componentWillMount() {
+        let chatBot = new Chatbot()
+        chatBot.getResponseBot('bonjour', '').then(res => {
+            this.setState({sessionID: res.data.session_id});
+        })
+    }
+
     componentDidUpdate() {
         const ref = this.messagesRef.current
         ref.scrollTop = ref.scrollHeight
@@ -61,22 +68,34 @@ class App extends Component {
                 />
             ))
 
-        return (
-            <div className='box'>
-                <div
-                    className='messages'
-                    ref={this.messagesRef}
-                >
-                    <div className='message'>
-                        {messages}
-                    </div>
+        if(this.state.sessionID === ''){
+            return(
+                <div className="loader">
+                    <Loader
+                        type="TailSpin"
+                        color="#2196F3"
+                        height="100"	
+                        width="100"/>
                 </div>
-                <Formulaire
-                    length={140}
-                    addMessage={this.addMessage}
-                />
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className='box'>
+                    <div
+                        className='messages'
+                        ref={this.messagesRef}
+                    >
+                        <div className='message'>
+                            {messages}
+                        </div>
+                    </div>
+                    <Formulaire
+                        length={140}
+                        addMessage={this.addMessage}
+                    />
+                </div>
+            )
+        }
     }
 }
 
