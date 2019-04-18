@@ -11,13 +11,12 @@ class Formulaire extends Component {
 
         const message = {
             pseudo: 'Human',
-            intent: '',
             message: this.state.message
         }
 
         addMessage(message)
         // reset
-        this.setState({message: '', length})
+        this.setState({ message: '', length })
     }
 
     handleSubmit = event => {
@@ -28,11 +27,11 @@ class Formulaire extends Component {
     handleChange = event => {
         const message = event.target.value
         const length = this.props.length - message.length
-        this.setState({message, length})
+        this.setState({ message, length })
     }
 
     handleKeyUp = event => {
-        if(event.key === 'Enter') {
+        if (event.key === 'Enter') {
             this.createMessage()
         }
     }

@@ -1,7 +1,7 @@
 import React from 'react'
-import Produit from './Produit'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+
 
 const Message = ({ message, pseudo, produits, intent }) => {
 
@@ -9,16 +9,13 @@ const Message = ({ message, pseudo, produits, intent }) => {
     if (produits) {
         self.listeProduits = Object.keys(produits)
             .map(key => (
-                <div>
-                    <img src={produits[key].image} />
-                    <p className="legend">{produits[key].name}</p>
+                <div key={key}>
+                    <img alt="" src={produits[key].image} />
+                    <div className="legend">
+                        <h4>{produits[key].name}</h4><br />
+                        <span>{produits[key].description}</span>
+                    </div>
                 </div>
-                // <Produit
-                //     key={key}
-                //     name={produits[key].name}
-                //     description={produits[key].description}
-                //     image={produits[key].image}
-                // />
             ))
     }
 
@@ -28,25 +25,31 @@ const Message = ({ message, pseudo, produits, intent }) => {
                 {message}
             </p>
         )
-    }
-    if (pseudo === 'Geekbot' && intent === '04A_ListeProduits') {
-        return (
-            <div className='not-user-message'>
-                <p>
+    } else {
+        if (intent === '01_welcome') {
+            return (
+                <p className='not-user-message'>{message}</p>
+            )
+        }
+        if (intent === '04A_ListeProduits') {
+            return (
+                <div className='not-user-message'>
+                    <p>
+                        <strong>{pseudo} :</strong> {message}
+                    </p>
+                    <Carousel>
+                        {this.listeProduits}
+                    </Carousel>
+                </div>
+            )
+        }
+        else {
+            return (
+                <p className='not-user-message'>
                     <strong>{pseudo} :</strong> {message}
                 </p>
-                <Carousel>
-                    {this.listeProduits}
-                </Carousel>
-            </div>
-        )
-    }
-    else {
-        return (
-            <p className='not-user-message'>
-                <strong>{pseudo} :</strong> {message}
-            </p>
-        )
+            )
+        }
     }
 }
 
