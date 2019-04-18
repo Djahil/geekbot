@@ -1,13 +1,13 @@
-import React from 'react';
+// import React from 'react';
 
-const Produit = ({ name, image }) => {
-    return (
-        <div >
-            <img src={image} />
-            <p className="legend">{name}</p>
-            {/* <p>{description}</p> */}
-        </div>
-    );
-}
+// const Produit = ({ name, image }) => {
+//     return (
+//         <div >
+//             <img src={image} />
+//             <p className="legend">{name}</p>
+//             {/* <p>{description}</p> */}
+//         </div>
+//     );
+// }
 
-export default Produit
+// export default Produit

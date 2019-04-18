@@ -61,7 +61,6 @@ class App extends Component {
                 />
             ))
 
-
         return (
             <div className='box'>
                 <div
