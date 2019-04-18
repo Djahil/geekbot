@@ -196,3 +196,8 @@ button:disabled {
 	background: #eceff1;
 }
 
+.loader {
+    width: 0px;
+    margin: 0 auto;
+    margin-top: calc(50vh - 50px);
+}
