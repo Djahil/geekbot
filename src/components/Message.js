@@ -2,6 +2,7 @@ import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import Connexion from './Connexion'
+import Cart from './Cart'
 
 const Message = ({ message, pseudo, produits, intent }) => {
 
@@ -26,34 +27,32 @@ const Message = ({ message, pseudo, produits, intent }) => {
             </p>
         )
     } else {
-        if (intent === '01_welcome') {
-            return (
-                <p className='not-user-message'><strong>{pseudo} :</strong> {message}</p>
-            )
-        }
-        if (intent === '04A_ListeProduits') {
+        if (intent === 'cart.check') {
             return (
                 <div className='not-user-message'>
-                    <p>
-                        <strong>{pseudo} :</strong> {message}
-                    </p>
+                    <p><strong>{pseudo} :</strong> {message}</p>
+                    <Cart />
+                </div>
+            )
+        }
+        if (intent === '04A_ListeProduits' || intent === '04Abis_ListProduitsByCategorie') {
+            return (
+                <div className='not-user-message'>
+                    <p><strong>{pseudo} :</strong> {message}</p>
                     <Carousel>
                         {this.listeProduits}
                     </Carousel>
                 </div>
             )
         }
-        if (intent === 'connexion') {
+        if (intent === 'connexion' || intent === 'connexion.login') {
             return (
                 <div className='not-user-message'>
-                    <p>
-                        <strong>{pseudo} :</strong> {message}
-                    </p>
+                    <p><strong>{pseudo} :</strong> {message}</p>
                     <Connexion />
                 </div>
             )
-        }
-        else {
+        } else {
             return (
                 <p className='not-user-message'>
                     <strong>{pseudo} :</strong> {message}
