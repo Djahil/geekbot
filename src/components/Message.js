@@ -28,10 +28,10 @@ const Message = ({ message, pseudo, produits, intent }) => {
         )
     } else {
         if (intent === 'cart.check') {
-            return(
+            return (
                 <div className='not-user-message'>
                     <p><strong>{pseudo} :</strong> {message}</p>
-                    <Cart/>
+                    <Cart />
                 </div>
             )
         }
@@ -46,7 +46,7 @@ const Message = ({ message, pseudo, produits, intent }) => {
             )
         }
         if (intent === 'connexion' || intent === 'connexion.login') {
-            return(
+            return (
                 <div className='not-user-message'>
                     <p><strong>{pseudo} :</strong> {message}</p>
                     <Connexion />
