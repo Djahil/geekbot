@@ -31,7 +31,7 @@ class App extends Component {
             }
             botMessage.message = res.data.response.queryResult.fulfillmentText
             botMessage.intent = res.data.response.queryResult.intent.displayName
-            if (botMessage.intent === '04A_ListeProduits') {
+            if (botMessage.intent === '04A_ListeProduits' || botMessage.intent === '04Abis_ListProduitsByCategorie') {
                 botMessage.produits = res.data.response.data
             }
             messages[`message-${Date.now()}`] = botMessage
