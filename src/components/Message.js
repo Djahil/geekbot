@@ -43,9 +43,8 @@ const Message = ({ message, pseudo, produits, intent }) => {
                 </div>
             )
         }
-        if (intent ==='connexion') {
-            
-            return(
+        if (intent === 'connexion') {
+            return (
                 <div className='not-user-message'>
                     <p>
                         <strong>{pseudo} :</strong> {message}

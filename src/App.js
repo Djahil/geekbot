@@ -47,7 +47,7 @@ class App extends Component {
     componentWillMount() {
         let chatBot = new Chatbot()
         chatBot.getResponseBot('bonjour', '').then(res => {
-            this.setState({sessionID: res.data.session_id});
+            this.setState({ sessionID: res.data.session_id });
         })
     }
 
@@ -68,14 +68,14 @@ class App extends Component {
                 />
             ))
 
-        if(this.state.sessionID === ''){
-            return(
+        if (this.state.sessionID === '') {
+            return (
                 <div className="loader">
                     <Loader
                         type="TailSpin"
                         color="#2196F3"
-                        height="100"	
-                        width="100"/>
+                        height="100"
+                        width="100" />
                 </div>
             )
         } else {

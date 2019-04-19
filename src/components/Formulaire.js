@@ -51,9 +51,7 @@ class Formulaire extends Component {
                 <div className='info'>
                     {this.state.length}
                 </div>
-                <button type='submit'>
-                    Envoyer
-                </button>
+                <button type='submit' className="button">Envoyer</button>
             </form>
         )
     }
